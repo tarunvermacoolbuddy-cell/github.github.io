@@ -3,47 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abhishek & Shivani | MIKAVIA</title>
+<title>Abhishek & Shivani | MIKAVYA</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
   min-height: 100vh;
-  padding: 25px 15px;
+  padding: 30px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: Georgia, serif;
-  background: linear-gradient(145deg, #fff5f4, #f3dce1, #fff8ee);
+  background: linear-gradient(145deg,#fff5f4,#f3dce1,#fff8ee);
   color: #76513d;
+  overflow-x: hidden;
 }
 
 .card {
+  position: relative;
   width: 100%;
   max-width: 450px;
   padding: 40px 22px 25px;
   text-align: center;
   border: 1px solid #c6a15c;
   border-radius: 18px;
-  background: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,.82);
   box-shadow: 0 10px 40px #9d777733;
-  animation: appear 1.5s ease both;
+  overflow: hidden;
 }
 
-@keyframes appear {
+/* Sequential text appearance */
+.reveal {
+  opacity: 0;
+  animation: showText .7s ease forwards;
+}
+
+@keyframes showText {
   from {
     opacity: 0;
-    transform: translateY(-35px);
+    transform: translateY(-18px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
+.delay1 { animation-delay: .15s; }
+.delay2 { animation-delay: .40s; }
+.delay3 { animation-delay: .65s; }
+.delay4 { animation-delay: .90s; }
+.delay5 { animation-delay: 1.15s; }
+.delay6 { animation-delay: 1.40s; }
+.delay7 { animation-delay: 1.65s; }
+.delay8 { animation-delay: 1.90s; }
 
 .quote {
   color: #a77b49;
@@ -86,14 +101,12 @@ h1 {
   border-top: 1px solid #d9bd8b;
   padding-top: 18px;
   margin-top: 30px;
-  font-family: Arial, sans-serif;
+  font-family: Arial,sans-serif;
   font-size: 12px;
   line-height: 1.6;
 }
 
-.left {
-  flex: 1;
-}
+.left { flex: 1; }
 
 .right {
   flex: 1;
@@ -107,29 +120,86 @@ h1 {
   font-weight: bold;
   letter-spacing: 1px;
 }
+
+/* Gentle flower shower */
+.petals {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.petal {
+  position: absolute;
+  top: -30px;
+  font-size: 17px;
+  opacity: 0;
+  animation: flowerFall linear infinite;
+}
+
+.petal:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; }
+.petal:nth-child(2) { left: 14%; animation-duration: 10s; animation-delay: 2s; }
+.petal:nth-child(3) { left: 25%; animation-duration: 9s; animation-delay: 1s; }
+.petal:nth-child(4) { left: 37%; animation-duration: 11s; animation-delay: 4s; }
+.petal:nth-child(5) { left: 49%; animation-duration: 8s; animation-delay: 3s; }
+.petal:nth-child(6) { left: 61%; animation-duration: 10s; animation-delay: 1s; }
+.petal:nth-child(7) { left: 73%; animation-duration: 9s; animation-delay: 5s; }
+.petal:nth-child(8) { left: 84%; animation-duration: 11s; animation-delay: 2s; }
+.petal:nth-child(9) { left: 95%; animation-duration: 9s; animation-delay: 4s; }
+
+@keyframes flowerFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: .8; }
+  90% { opacity: .7; }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; opacity: 1; }
+  .petal { animation: none; display: none; }
+}
 </style>
 </head>
 
 <body>
 
+<div class="petals" aria-hidden="true">
+  <span class="petal">🌸</span>
+  <span class="petal">✿</span>
+  <span class="petal">🌸</span>
+  <span class="petal">❀</span>
+  <span class="petal">🌸</span>
+  <span class="petal">✿</span>
+  <span class="petal">🌸</span>
+  <span class="petal">❀</span>
+  <span class="petal">🌸</span>
+</div>
+
 <div class="card">
 
-  <div class="quote">
+  <div class="quote reveal delay1">
     A beautiful celebration becomes unforgettable
     because of the people who share it with us.
   </div>
 
-  <h1>
+  <h1 class="reveal delay2">
     Abhishek<br>&<br>Shivani
   </h1>
 
-  <div class="date">
+  <div class="date reveal delay3">
     5 DECEMBER 2026
   </div>
 
-  <div class="line"></div>
+  <div class="line reveal delay4"></div>
 
-  <p class="message">
+  <p class="message reveal delay5">
     Your presence makes our celebration more beautiful.
     <br><br>
     Thank you for being a part of our special day!
@@ -138,12 +208,12 @@ h1 {
   <div class="footer">
 
     <div class="left">
-      Made Memorable with
-      <div class="brand">MIKAVIA</div>
-      8950168357
+      <div class="reveal delay6">Made Memorable with</div>
+      <div class="brand reveal delay7">MIKAVYA</div>
+      <div class="reveal delay8">8950168357</div>
     </div>
 
-    <div class="right">
+    <div class="right reveal delay8">
       SUNDER TENT HOUSE
     </div>
 
@@ -152,4 +222,4 @@ h1 {
 </div>
 
 </body>
-</html
+</html>
